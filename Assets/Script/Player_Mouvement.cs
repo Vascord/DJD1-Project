@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Mouvement : MonoBehaviour
+public class PlayerMouvement : MonoBehaviour
 {
     public float maxSpeed = 100.0f;
     public float jumpSpeed = 200.0f;
@@ -33,6 +33,16 @@ public class Player_Mouvement : MonoBehaviour
         Collider2D groundCollision = Physics2D.OverlapCircle(groundCheck.position, 5, groundLayers);
         
         bool onGround = groundCollision != null;
+
+        if (Input.GetAxisRaw("Horizontal") < -0.5f)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+
+        else if (Input.GetAxisRaw("Horizontal") > 0.5f)
+        {
+            transform.rotation = Quaternion.identity;
+        }
 
         if ((Input.GetButtonDown("Jump")) && (onGround))
         {
