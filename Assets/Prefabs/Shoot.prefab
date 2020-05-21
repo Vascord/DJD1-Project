@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 6221875827632263346}
   - component: {fileID: 2177572245189549722}
   m_Layer: 0
-  m_Name: RightShoot
-  m_TagString: Untagged
+  m_Name: Shoot
+  m_TagString: PlayerShoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useObjectDirection: 1
   moveVector: {x: 0, y: 0, z: 0}
-  speed: 800
+  speed: 600
 --- !u!114 &7370540481696668866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f05a817c319794f87c10533fc8cc84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0.7
+  time: 0.4
 --- !u!50 &1437783297140258518
 Rigidbody2D:
   serializedVersion: 4
@@ -148,7 +148,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 3, y: 1}
+  m_Size: {x: 2, y: 2}
   m_Direction: 1
 --- !u!114 &2177572245189549722
 MonoBehaviour:

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMouvement : MonoBehaviour
+public class Player_Mouvement : MonoBehaviour
 {
     public float maxSpeed = 100.0f;
     public float jumpSpeed = 200.0f;
