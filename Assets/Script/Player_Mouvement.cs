@@ -56,13 +56,19 @@ public class Player_Mouvement : MonoBehaviour
             currentVelocity = new Vector2(300 * hAxis, currentVelocity.y);
         }
 
-        if (Input.GetAxisRaw("Horizontal") < -0.5f)
+        if (currentVelocity.x < -0.5f)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            if (transform.right.x > 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
         }
-        else if (Input.GetAxisRaw("Horizontal") > 0.5f)
+        else if (currentVelocity.x > 0.5f)
         {
-            transform.rotation = Quaternion.identity;
+            if (transform.right.x < 0)
+            {
+                transform.rotation = Quaternion.identity;
+            }
         }
 
         if ((Input.GetButtonDown("Jump")) && (onGround))
