@@ -76,12 +76,12 @@ public class Enemy : MonoBehaviour
             }
 
         }
-
-        distance_player = Vector3.Distance (player.transform.position, wallDetector.transform.position);
+        
+        distance_player = Vector3.Distance ((player.transform.position + new Vector3 (0,8,0)), wallDetector.transform.position);
 
         if(distance_player < 150)
         {
-            player_position = (wallDetector.transform.position - player.transform.position).normalized;
+            player_position = (wallDetector.transform.position - (player.transform.position + new Vector3 (0,8,0))).normalized;
 
             forward = (wallDetector.transform.position - enemyDetector.transform.position).normalized;
 
