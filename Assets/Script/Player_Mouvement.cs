@@ -16,16 +16,19 @@ public class Player_Mouvement : MonoBehaviour
     bool first_dash = false;
 
     Rigidbody2D rb;
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         float hAxis = Input.GetAxis("Horizontal");
 
         Vector2 currentVelocity = rb.velocity;
@@ -87,5 +90,7 @@ public class Player_Mouvement : MonoBehaviour
         }
 
         rb.velocity = currentVelocity;
+
+        anim.SetFloat("AbsVelX", Mathf.Abs(currentVelocity.x));
     }
 }
