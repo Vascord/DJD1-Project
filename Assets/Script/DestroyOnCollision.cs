@@ -7,18 +7,24 @@ public class DestroyOnCollision : MonoBehaviour
 {
     [Tag]
     new public string       tag;
-    public GameObject       effect;
-
+    [Tag]
+    new public string       walltag;
+    [SerializeField] float  damage;
+    [SerializeField] float  Adamage;
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((tag == collision.tag) || (tag == ""))
+        if ((tag == collision.tag) || (walltag == collision.tag))
         {
             Destroy(gameObject);
 
-            if (effect)
+            HP hp = collision.GetComponent<HP>();
+
+            if (hp)
             {
-                Instantiate(effect, transform.position, transform.rotation);
+                hp.DealDamage(damage, Adamage);
             }
+
         }
     }
 }

@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 1174813686}
   m_Layer: 8
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15556,7 +15556,7 @@ GameObject:
   - component: {fileID: 1236484698}
   m_Layer: 9
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15715,6 +15715,8 @@ MonoBehaviour:
   damageMask:
     serializedVersion: 2
     m_Bits: 1024
+  damage: 50
+  Adamage: 1
 --- !u!114 &1236484698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15724,11 +15726,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1236484691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 398a516c0744e7c47956eb87fcff7395, type: 3}
+  m_Script: {fileID: 11500000, guid: 7366d29726e22bb449c930d5e2036405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tag: PlayerShoot
-  effect: {fileID: 0}
+  hp: 250
+  ahp: 0
 --- !u!1 &1319944796
 GameObject:
   m_ObjectHideFlags: 0
@@ -15775,7 +15777,7 @@ GameObject:
   - component: {fileID: 1698731974}
   m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15921,11 +15923,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1698731968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 398a516c0744e7c47956eb87fcff7395, type: 3}
+  m_Script: {fileID: 11500000, guid: 7366d29726e22bb449c930d5e2036405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tag: EnemyShoot
-  effect: {fileID: 0}
+  hp: 150
+  ahp: 50
 --- !u!1 &1742634764
 GameObject:
   m_ObjectHideFlags: 0
@@ -15939,11 +15941,11 @@ GameObject:
   - component: {fileID: 1742634769}
   - component: {fileID: 1742634768}
   - component: {fileID: 1742634767}
-  - component: {fileID: 1742634766}
   - component: {fileID: 1742634765}
+  - component: {fileID: 1742634772}
   m_Layer: 9
   m_Name: Enemy_with_Gun
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15966,20 +15968,6 @@ MonoBehaviour:
   cooldownTime: 0.5
   triggerTime: 1
   bullet: {fileID: 7295667498489955483, guid: 5998ac0cdcadbf442bb0dc58c4158219, type: 3}
---- !u!114 &1742634766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742634764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 398a516c0744e7c47956eb87fcff7395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tag: PlayerShoot
-  effect: {fileID: 0}
 --- !u!114 &1742634767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15996,6 +15984,8 @@ MonoBehaviour:
   damageMask:
     serializedVersion: 2
     m_Bits: 1024
+  damage: 5
+  Adamage: 0
 --- !u!61 &1742634768
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16107,6 +16097,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1742634772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742634764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7366d29726e22bb449c930d5e2036405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 150
+  ahp: 0
 --- !u!1 &1752805339
 GameObject:
   m_ObjectHideFlags: 0

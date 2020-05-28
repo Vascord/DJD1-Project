@@ -46,7 +46,7 @@ public class Player_Mouvement : MonoBehaviour
         }
         else
         {
-            if ((Input.GetButtonDown("Dash")) && (onGround) && (Time.time - dashTime >= 3.0f))
+            if ((Input.GetButtonDown("Dash")) && (onGround) && (Time.time - dashTime >= 1.0f))
             {
                 dashTime = Time.time;
             }

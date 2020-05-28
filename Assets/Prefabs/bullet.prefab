@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8481298205592256844}
   - component: {fileID: 1684951431911983619}
   - component: {fileID: 3223207172158176310}
+  - component: {fileID: -8815993002877857745}
   m_Layer: 0
   m_Name: bullet
   m_TagString: EnemyShoot
@@ -126,7 +127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tag: 
-  effect: {fileID: 0}
+  walltag: 
+  damage: 0
+  Adamage: 0
 --- !u!50 &1684951431911983619
 Rigidbody2D:
   serializedVersion: 4
@@ -164,3 +167,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2, y: 2}
   m_Direction: 0
+--- !u!114 &-8815993002877857745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295667498489955483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398a516c0744e7c47956eb87fcff7395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tag: Player
+  walltag: Ground
+  damage: 30
+  Adamage: 2

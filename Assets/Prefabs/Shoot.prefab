@@ -162,5 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398a516c0744e7c47956eb87fcff7395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tag: 
-  effect: {fileID: 0}
+  tag: Enemy
+  walltag: Ground
+  damage: 50
+  Adamage: 0
