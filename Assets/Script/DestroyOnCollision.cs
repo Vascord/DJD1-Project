@@ -24,7 +24,6 @@ public class DestroyOnCollision : MonoBehaviour
             {
                 hp.DealDamage(damage, Adamage);
             }
-
         }
     }
 }

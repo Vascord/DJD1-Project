@@ -18,6 +18,8 @@ public class Shoot : MonoBehaviour
     [ShowIf("autoAim"),Tag]
     public string       targetTag = "";
     public GameObject   bullet;
+    public GameObject   shotgunbullet;
+    public int[] weapon = new int [] {2, 0};
 
     bool IsTrigger()
     {
@@ -64,6 +66,47 @@ public class Shoot : MonoBehaviour
                 }
             }
         }
+
+        if (Input.GetButtonDown("Swap"))
+        {
+            bool next = false;
+            for(int i = 0; i < 2; i++)
+            {
+                if(weapon[i] == 1)
+                {
+                    weapon[i] = 2;
+                    next = true;
+                }
+                if((weapon[i] == 2) && (next == false))
+                {
+                    weapon[i] = 1;
+                }
+                next = false;
+            }
+            
+            int e = 0;
+
+            for(int i = 0; i < 2; i++)
+            {
+                if(weapon[i] == 2)
+                {
+                    break;
+                }
+
+                e++;
+
+                if(i+1 == e)
+                {
+                    weapon[0] = 2;
+                }
+            }
+            Debug.Log(weapon[1]);
+        }
+    }
+
+    public void NewWeapon(int number)
+    {
+        weapon[number] = 1;
     }
 
     void Fire()
@@ -91,11 +134,39 @@ public class Shoot : MonoBehaviour
 
                 Vector3 dir = (target.transform.position - transform.position).normalized;
                 rotation = Quaternion.LookRotation(Vector3.forward, dir);
+
+                Instantiate(bullet, transform.position, rotation);
             }
         }
 
-        Instantiate(bullet, transform.position, rotation);
+        if((gameObject.tag == "Player") && (weapon[1] == 2))
+        {
+            if(rotation[0] > 0)
+            {
+                for(float i = -0.3f; i < 0.31; i += 0.1f)
+                {
+                    rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (-1,i,0));
+
+                    Instantiate(shotgunbullet, transform.position, rotation);
+                }
+            }
+            else
+            {
+                for(float i = -0.3f; i < 0.31; i += 0.1f)
+                {
+                    rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (1,i,0));
+
+                    Instantiate(shotgunbullet, transform.position, rotation);
+                }
+            }
+        }
+
+        else if ((gameObject.tag == "Player") && (weapon[0] == 2))
+        {
+            Instantiate(bullet, transform.position, rotation);
+        }
 
         cooldown = cooldownTime;
     }
+
 }
