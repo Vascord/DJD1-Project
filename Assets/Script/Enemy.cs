@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float     moveSpeed = 150.0f;
+    [SerializeField] float     moveSpeed = 100.0f;
     [SerializeField] Transform groundDetector = null;
     [SerializeField] Transform wallDetector = null;
     [SerializeField] Transform enemyDetector = null;
@@ -12,8 +12,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] float     enemydetectionRadius = 1.0f;
     [SerializeField] LayerMask groundLayers;
     [SerializeField] LayerMask enemyLayers;
+    [SerializeField] Transform player;
 
     Rigidbody2D rigidBody;
+
+    Vector3 player_position;
+    Vector3 forward;
+
+    float distance_player;
+    float view;
 
     // Start is called before the first frame update
     void Start()
@@ -70,9 +77,33 @@ public class Enemy : MonoBehaviour
 
         }
         
-        currentVelocity.x = transform.right.x * moveSpeed;
+        distance_player = Vector3.Distance ((player.transform.position + new Vector3 (0,8,0)), wallDetector.transform.position);
 
-        rigidBody.velocity = currentVelocity;
+        if(distance_player < 150)
+        {
+            player_position = (wallDetector.transform.position - (player.transform.position + new Vector3 (0,8,0))).normalized;
+
+            forward = (wallDetector.transform.position - enemyDetector.transform.position).normalized;
+
+            if(Vector3.Dot(player_position, forward) > 0.9)
+            {
+                currentVelocity.x = transform.right.x * 150.0f;
+
+                rigidBody.velocity = currentVelocity;
+            }
+            else
+            {
+                currentVelocity.x = transform.right.x * moveSpeed;
+
+                rigidBody.velocity = currentVelocity;
+            }
+        }
+        else
+        {
+            currentVelocity.x = transform.right.x * moveSpeed;
+
+            rigidBody.velocity = currentVelocity;
+        }
 
     }
 

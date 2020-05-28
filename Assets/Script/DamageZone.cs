@@ -7,6 +7,8 @@ public class DamageZone : MonoBehaviour
 
     [SerializeField] Collider2D damageArea;
     [SerializeField] LayerMask  damageMask;
+    [SerializeField] float  damage;
+    [SerializeField] float  Adamage;
 
     ContactFilter2D contactFilter;
 
@@ -23,5 +25,20 @@ public class DamageZone : MonoBehaviour
         Collider2D[] results = new Collider2D[64];
 
         int nCollisions = Physics2D.OverlapCollider(damageArea, contactFilter, results);
+
+        if(nCollisions > 0)
+        {
+            for (int i = 0; i < nCollisions;i++)
+            {
+                Collider2D otherCollider = results[i];
+
+                HP hp = otherCollider.GetComponent<HP>();
+
+                if (hp)
+                {
+                    hp.DealDamage(damage, Adamage);
+                }
+            }
+        }
     }
 }

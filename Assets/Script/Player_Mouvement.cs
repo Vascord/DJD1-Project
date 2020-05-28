@@ -12,6 +12,8 @@ public class Player_Mouvement : MonoBehaviour
     public LayerMask groundLayers; 
 
     float jumpTime;
+    float dashTime;
+    bool first_dash = false;
 
     Rigidbody2D rb;
 
@@ -34,14 +36,39 @@ public class Player_Mouvement : MonoBehaviour
         
         bool onGround = groundCollision != null;
 
-        if (Input.GetAxisRaw("Horizontal") < -0.5f)
+        if((Time.time < 5.0f) && (first_dash == false))
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            if ((Input.GetButtonDown("Dash")) && (onGround))
+            {
+                dashTime = Time.time;
+                first_dash = true;
+            }
+        }
+        else
+        {
+            if ((Input.GetButtonDown("Dash")) && (onGround) && (Time.time - dashTime >= 1.0f))
+            {
+                dashTime = Time.time;
+            }
+        }
+        if((Time.time - dashTime < 0.3f) && (Time.time > 0.3f))
+        {
+            currentVelocity = new Vector2(300 * hAxis, currentVelocity.y);
         }
 
-        else if (Input.GetAxisRaw("Horizontal") > 0.5f)
+        if (currentVelocity.x < -0.5f)
         {
-            transform.rotation = Quaternion.identity;
+            if (transform.right.x > 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+        }
+        else if (currentVelocity.x > 0.5f)
+        {
+            if (transform.right.x < 0)
+            {
+                transform.rotation = Quaternion.identity;
+            }
         }
 
         if ((Input.GetButtonDown("Jump")) && (onGround))
