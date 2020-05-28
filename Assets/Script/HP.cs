@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HP : MonoBehaviour
 {
@@ -42,9 +43,9 @@ public class HP : MonoBehaviour
 
         if (gameObject.layer == 10)
         {
-            if(ahp <= 0)
+            if((ahp <= 0) && (hp <= 0))
             {
-                Destroy(gameObject);
+                BackToMainMenu();
             }
             else if (hp <= 0)
             {
@@ -60,5 +61,10 @@ public class HP : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void BackToMainMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
 }
