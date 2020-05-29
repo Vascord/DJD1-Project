@@ -9,7 +9,7 @@ public class Player_Mouvement : MonoBehaviour
     public float jumpMaxTime = 0.1f;
 
     public Transform groundCheck;
-    public LayerMask groundLayers; 
+    public LayerMask groundLayers;
 
     float jumpTime;
     float dashTime;
@@ -36,27 +36,33 @@ public class Player_Mouvement : MonoBehaviour
         currentVelocity = new Vector2(maxSpeed * hAxis, currentVelocity.y);
 
         Collider2D groundCollision = Physics2D.OverlapCircle(groundCheck.position, 5, groundLayers);
-        
+
         bool onGround = groundCollision != null;
 
-        if((Time.time < 5.0f) && (first_dash == false))
+        if ((Time.time < 5.0f) && (first_dash == false))
         {
-            if ((Input.GetButtonDown("Dash")) && (onGround))
+            if ((Input.GetButtonDown("Dash")) && (hAxis != 0.0f) && (onGround))
             {
                 dashTime = Time.time;
                 first_dash = true;
+                anim.SetBool("Dash", true);
             }
         }
         else
         {
-            if ((Input.GetButtonDown("Dash")) && (onGround) && (Time.time - dashTime >= 1.0f))
+            if ((Input.GetButtonDown("Dash")) && (hAxis != 0.0f) && (onGround) && (Time.time - dashTime >= 1.0f))
             {
                 dashTime = Time.time;
+                anim.SetBool("Dash", true);
             }
         }
-        if((Time.time - dashTime < 0.3f) && (Time.time > 0.3f))
+        if ((Time.time - dashTime < 0.3f) && (Time.time > 0.3f))
         {
             currentVelocity = new Vector2(300 * hAxis, currentVelocity.y);
+        }
+        else
+        {
+            anim.SetBool("Dash", false);
         }
 
         if (currentVelocity.x < -0.5f)
@@ -78,19 +84,23 @@ public class Player_Mouvement : MonoBehaviour
         {
             currentVelocity.y = jumpSpeed;
             rb.gravityScale = 0.0f;
-
+            anim.SetBool("Jump", true);
             jumpTime = Time.time;
         }
-        else if ((Input.GetButton("Jump")) && ((Time.time - jumpTime) < jumpMaxTime))
+        else if (!(Input.GetButton("Jump") && ((Time.time - jumpTime) < jumpMaxTime)))
         {
+            rb.gravityScale = 3.0f;
+            anim.SetBool("Jump", false);
         }
         else
         {
-            rb.gravityScale = 3.0f;
+
         }
+
 
         rb.velocity = currentVelocity;
 
         anim.SetFloat("AbsVelX", Mathf.Abs(currentVelocity.x));
+        anim.SetFloat("AbsVelY", Mathf.Abs(currentVelocity.y));
     }
 }
