@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 711, y: 494}
   m_MaxSize: {x: 18006, y: 14044}
   vertical: 0
-  controlID: 3398
+  controlID: 4746
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 494}
   m_MaxSize: {x: 10002, y: 14044}
   vertical: 1
-  controlID: 3404
+  controlID: 4804
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_MinSize: {x: 204, y: 444}
   m_MaxSize: {x: 4004, y: 8044}
   vertical: 1
-  controlID: 3320
+  controlID: 4708
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -412,21 +412,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: daeaffffb6eeffffec400000f6400000
+      m_ExpandedIDs: e8d5ffff50dfffff3ae1ffff48eeffffa0eeffff163f0000203f00002a3f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Main Camera
+        m_OriginalName: Main Camera
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 16160
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 7}
       m_SearchString: 
@@ -481,14 +481,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Sprites/Characters
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: "C:\\Users\\ajsbr\\Desktop\\reposit\xF3rios\\DJD1\\DJD1-Project"
+  m_LastProjectPath: C:\Users\Asus\Desktop\Universidade\2nd Semestre\DJD1\DJD1-Project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 703b0000
-    m_LastClickedID: 15216
-    m_ExpandedIDs: 000000002a390000c8390000163a0000703b0000aa3b0000d83b0000883d000000ca9a3b
+    m_SelectedIDs: 803b0000
+    m_LastClickedID: 15232
+    m_ExpandedIDs: 0000000036390000d8390000243a0000803b0000ba3b0000e83b0000983d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -516,7 +516,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002a390000c8390000163a0000703b0000aa3b0000d83b0000883d000000ca9a3b
+    m_ExpandedIDs: 0000000036390000d8390000243a0000803b0000ba3b0000e83b0000983d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -634,9 +634,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -129.77257, y: 5.940194, z: -31.3125}
+    m_Target: {x: -254.628, y: 67.187225, z: -111.72656}
     speed: 2
-    m_Value: {x: 12.895465, y: 2.908584, z: -6.9257812}
+    m_Value: {x: -254.628, y: 67.187225, z: -111.72656}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -669,9 +669,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 225.93005
+    m_Target: 52.091076
     speed: 2
-    m_Value: 23.700901
+    m_Value: 54.545628
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 16636
+  m_LastSelectedObjectID: 16150
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52

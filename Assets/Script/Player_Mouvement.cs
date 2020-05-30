@@ -36,7 +36,7 @@ public class Player_Mouvement : MonoBehaviour
 
         currentVelocity = new Vector2(maxSpeed * hAxis, currentVelocity.y);
 
-        Collider2D groundCollision = Physics2D.OverlapCircle(groundCheck.position, 5, groundLayers);
+        Collider2D groundCollision = Physics2D.OverlapCircle(groundCheck.position, 4, groundLayers);
 
         onGround = groundCollision != null;
 
