@@ -14,6 +14,7 @@ public class Player_Mouvement : MonoBehaviour
     float jumpTime;
     float dashTime;
     bool first_dash = false;
+    bool onGround;
 
     Rigidbody2D rb;
     Animator anim;
@@ -37,7 +38,7 @@ public class Player_Mouvement : MonoBehaviour
 
         Collider2D groundCollision = Physics2D.OverlapCircle(groundCheck.position, 5, groundLayers);
 
-        bool onGround = groundCollision != null;
+        onGround = groundCollision != null;
 
         if ((Time.time < 5.0f) && (first_dash == false))
         {
@@ -84,13 +85,11 @@ public class Player_Mouvement : MonoBehaviour
         {
             currentVelocity.y = jumpSpeed;
             rb.gravityScale = 0.0f;
-            anim.SetBool("Jump", true);
             jumpTime = Time.time;
         }
         else if (!(Input.GetButton("Jump") && ((Time.time - jumpTime) < jumpMaxTime)))
         {
-            rb.gravityScale = 3.0f;
-            anim.SetBool("Jump", false);
+            rb.gravityScale = 5.0f;
         }
         else
         {
@@ -101,6 +100,7 @@ public class Player_Mouvement : MonoBehaviour
         rb.velocity = currentVelocity;
 
         anim.SetFloat("AbsVelX", Mathf.Abs(currentVelocity.x));
-        anim.SetFloat("AbsVelY", Mathf.Abs(currentVelocity.y));
+        anim.SetFloat("AbsVelY", currentVelocity.y);
+        anim.SetBool("OnGround", onGround);
     }
 }
