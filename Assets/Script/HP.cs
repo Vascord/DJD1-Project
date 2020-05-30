@@ -65,6 +65,6 @@ public class HP : MonoBehaviour
 
     void BackToMainMenu()
     {
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("GameOver");
     }
 }

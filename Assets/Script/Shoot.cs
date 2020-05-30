@@ -100,7 +100,6 @@ public class Shoot : MonoBehaviour
                     weapon[0] = 2;
                 }
             }
-            Debug.Log(weapon[1]);
         }
     }
 
