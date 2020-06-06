@@ -49,8 +49,7 @@ public class HP : MonoBehaviour
             }
             else if (hp <= 0)
             {
-                gameObject.transform.position = new Vector3 (-141,-30,0);
-                hp = 150;
+                BackInTime();
             }
             else
             {
@@ -66,5 +65,10 @@ public class HP : MonoBehaviour
     void BackToMainMenu()
     {
         SceneManager.LoadScene("GameOver");
+    }
+
+    void BackInTime()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 }

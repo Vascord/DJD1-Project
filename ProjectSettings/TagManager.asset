@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Ground
   - Weapon
+  - Shootgun
+  - MacDo
   layers:
   - Default
   - TransparentFX

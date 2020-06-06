@@ -19,7 +19,10 @@ public class Shoot : MonoBehaviour
     public string       targetTag = "";
     public GameObject   bullet;
     public GameObject   shotgunbullet;
-    public int[] weapon = new int [] {2, 0};
+    public GameObject   macbullet;
+    public int[] weapon = new int [] {2, 0, 0};
+
+    int[] ammo = new int [] {0, 0, 0};
 
     bool IsTrigger()
     {
@@ -42,9 +45,88 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
+        if(weapon[0] == 2)
+        {
+            cooldownTime = 0.5f;
+            triggerTime = 1.0f;
+            CooldownTiming(cooldownTime, triggerTime);
+        }
+        else if(weapon[1] == 2)
+        {
+            cooldownTime = 1.5f;
+            triggerTime = 1.0f;
+            CooldownTiming(cooldownTime, triggerTime);
+        }
+        else if(weapon[2] == 2)
+        {
+            cooldownTime = 0.1f;
+            triggerTime = 1.0f;
+            CooldownTiming(cooldownTime, triggerTime);
+        }
+
+        if (Input.GetButtonDown("Swap"))
+        {
+            bool current_weapon = false;
+            int e = 0;
+            for(int i = 0; i < 3; i++)
+            {
+                if(weapon[i] == 2) 
+                {
+                    current_weapon = true;
+                    e = i;
+                }
+                else if((current_weapon == true) && (weapon[i] == 1))
+                {
+                    weapon[i] = 2;
+                    current_weapon = false;
+                    weapon[e] = 1;
+                    break;
+                }
+            }
+
+            if(current_weapon == true)
+            {
+                for(int i = 0; i < 3; i++)
+                {
+                    if(weapon[i] == 1)
+                    {
+                        weapon[i] = 2;
+                        current_weapon = false;
+                        weapon[e] = 1;
+                        break;
+                    }
+                }
+            }
+
+            if(current_weapon == true)
+            {
+                weapon[0] = 2;
+            }
+        }
+    }
+
+    public void NewWeapon(int number)
+    {
+        if(weapon[number] == 0)
+        {
+            weapon[number] = 1;
+        }
+
+        if(number == 1)
+        {
+            ammo[number] = 10;
+        }
+        if(number == 2)
+        {
+            ammo[number] = 120;
+        }
+    }
+
+    void CooldownTiming(float cooldownTime, float triggerTime)
+    {
         cooldown -= Time.deltaTime;
 
-        if (mode == ShootMode.Auto)
+        if (mode == ShootMode.Auto) 
         {
             timer -= Time.deltaTime;
             if (timer <= 0.0f)
@@ -60,52 +142,12 @@ public class Shoot : MonoBehaviour
         {
             if (cooldown <= 0.0f)
             {
-                if (Input.GetButtonDown(trigger))
+                if (Input.GetButton(trigger))
                 {
                     Fire();
                 }
             }
         }
-
-        if (Input.GetButtonDown("Swap"))
-        {
-            bool next = false;
-            for(int i = 0; i < 2; i++)
-            {
-                if(weapon[i] == 1)
-                {
-                    weapon[i] = 2;
-                    next = true;
-                }
-                if((weapon[i] == 2) && (next == false))
-                {
-                    weapon[i] = 1;
-                }
-                next = false;
-            }
-            
-            int e = 0;
-
-            for(int i = 0; i < 2; i++)
-            {
-                if(weapon[i] == 2)
-                {
-                    break;
-                }
-
-                e++;
-
-                if(i+1 == e)
-                {
-                    weapon[0] = 2;
-                }
-            }
-        }
-    }
-
-    public void NewWeapon(int number)
-    {
-        weapon[number] = 1;
     }
 
     void Fire()
@@ -138,6 +180,11 @@ public class Shoot : MonoBehaviour
             }
         }
 
+        if ((gameObject.tag == "Player") && (weapon[0] == 2))
+        {
+            Instantiate(bullet, transform.position, rotation);
+        }
+
         if((gameObject.tag == "Player") && (weapon[1] == 2))
         {
             if(rotation[0] > 0)
@@ -147,6 +194,7 @@ public class Shoot : MonoBehaviour
                     rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (-1,i,0));
 
                     Instantiate(shotgunbullet, transform.position, rotation);
+
                 }
             }
             else
@@ -156,13 +204,40 @@ public class Shoot : MonoBehaviour
                     rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (1,i,0));
 
                     Instantiate(shotgunbullet, transform.position, rotation);
+
                 }
+            }
+
+            ammo[1] -= 1;
+
+            if(ammo[1] == 0)
+            {
+                weapon[1] = 0;
+                weapon[0] = 2;
             }
         }
 
-        else if ((gameObject.tag == "Player") && (weapon[0] == 2))
+        if((gameObject.tag == "Player") && (weapon[2] == 2))
         {
-            Instantiate(bullet, transform.position, rotation);
+            if(rotation[0] > 0)
+            {
+                rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (-1,Random.Range(-0.3f,0.3f),0));
+
+                Instantiate(macbullet, transform.position, rotation);
+            }
+            else
+            {   
+                rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (1,Random.Range(-0.3f,0.3f),0));
+
+                Instantiate(macbullet, transform.position, rotation); 
+            }
+            ammo[2] -= 1;
+
+            if(ammo[2] == 0)
+            {
+                weapon[2] = 0;
+                weapon[0] = 2;
+            }
         }
 
         cooldown = cooldownTime;
