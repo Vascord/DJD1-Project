@@ -69,6 +69,7 @@
      <Compile Include="Assets\Script\SavePointGrab.cs" />
      <Compile Include="Assets\Script\Shoot.cs" />
      <Compile Include="Assets\Script\SmartEnemy.cs" />
+     <Compile Include="Assets\Script\UIManager.cs" />
      <Compile Include="Assets\Script\WeaponGrab.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

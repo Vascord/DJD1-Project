@@ -7,6 +7,8 @@ public class HP : MonoBehaviour
 {
     public float hp = 150;
     public float ahp = 50;
+    public UIManager healthbar;
+    public UIManager ahealthbar;
 
     float timer = 0.0f;
 
@@ -43,6 +45,8 @@ public class HP : MonoBehaviour
 
         if (gameObject.layer == 10)
         {
+            isInvulnerable = true;
+
             if((ahp <= 0) && (hp <= 0))
             {
                 BackToMainMenu();
@@ -51,15 +55,16 @@ public class HP : MonoBehaviour
             {
                 BackInTime();
             }
-            else
-            {
-                isInvulnerable = true;
-            }
+
+            healthbar.SetHealth(hp);
+            ahealthbar.SetAHealth(ahp);
+
         }
         else if (hp <= 0)
         {
             Destroy(gameObject);
         }
+
     }
 
     public void HealDamage()
@@ -75,6 +80,7 @@ public class HP : MonoBehaviour
 
     void BackInTime()
     {
-        SceneManager.LoadScene("SampleScene");
+        gameObject.transform.position = new Vector3 (-141,-30,0);
+        hp = 150;
     }
 }
