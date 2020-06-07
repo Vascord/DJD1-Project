@@ -66,6 +66,7 @@
      <Compile Include="Assets\Script\MainMenu.cs" />
      <Compile Include="Assets\Script\MoveForward.cs" />
      <Compile Include="Assets\Script\Player_Mouvement.cs" />
+     <Compile Include="Assets\Script\SavePointGrab.cs" />
      <Compile Include="Assets\Script\Shoot.cs" />
      <Compile Include="Assets\Script\SmartEnemy.cs" />
      <Compile Include="Assets\Script\WeaponGrab.cs" />

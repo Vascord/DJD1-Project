@@ -62,6 +62,12 @@ public class HP : MonoBehaviour
         }
     }
 
+    public void HealDamage()
+    {
+        hp = 150;
+        ahp = 50;
+    }
+
     void BackToMainMenu()
     {
         SceneManager.LoadScene("GameOver");
