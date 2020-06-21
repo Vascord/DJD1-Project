@@ -80,6 +80,7 @@ public class HP : MonoBehaviour
 
     void BackInTime()
     {
+        FindObjectOfType<AudioManager>().Play("PlayerDeath");
         gameObject.transform.position = new Vector3 (-141,-30,0);
         hp = 150;
     }
