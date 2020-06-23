@@ -24,6 +24,7 @@ public class Player_Mouvement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        gameObject.transform.position = Player_Management.Instance.position;
     }
 
     // Update is called once per frame

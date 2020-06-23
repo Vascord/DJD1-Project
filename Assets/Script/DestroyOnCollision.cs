@@ -16,7 +16,14 @@ public class DestroyOnCollision : MonoBehaviour
     {
         if ((tag == collision.tag) || (walltag == collision.tag))
         {
-            Destroy(gameObject);
+            if(gameObject.tag == "SavePoint")
+            {
+                gameObject.transform.position = new Vector3(-10000,-10000,-100);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
 
             HP hp = collision.GetComponent<HP>();
 

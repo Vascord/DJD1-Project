@@ -19,6 +19,7 @@ public class SavePointGrab : MonoBehaviour
             if (player)
             {
                 player.HealDamage();
+                Player_Management.Instance.position = gameObject.transform.position;
             }
         }
     }

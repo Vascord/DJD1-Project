@@ -719,7 +719,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -407.9, y: 208.7}
+  m_AnchoredPosition: {x: -390.4, y: 208.7}
   m_SizeDelta: {x: 62.15, y: 18.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1037443541
@@ -15741,6 +15741,51 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 20
+--- !u!1 &1571524408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1571524409}
+  - component: {fileID: 1571524410}
+  m_Layer: 0
+  m_Name: Player_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1571524409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571524408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1571524410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571524408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2edf9a0cd46c84997b18a730de66e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ahp: 0
+  position: {x: 0, y: 0, z: 0}
 --- !u!1001 &1611511960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15838,6 +15883,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec793ea1242928d469984f5a39b5c650, type: 3}
+--- !u!1 &1661943566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7944945011770821769, guid: d1d5b5cab71530b4799710f5468aa034,
+    type: 3}
+  m_PrefabInstance: {fileID: 815537411}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1661943572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661943566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323520377d031994fa3c204bed620a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1695916757
 GameObject:
   m_ObjectHideFlags: 0
@@ -16145,7 +16208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -370, y: 228.7}
+  m_AnchoredPosition: {x: -353, y: 228.7}
   m_SizeDelta: {x: 136.97, y: 18.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &2275275450167886493
@@ -16155,6 +16218,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2275275451098185924, guid: 91ce6729d3b4c6940aa993b94b5de470,
+        type: 3}
+      propertyPath: Adamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2275275451098185925, guid: 91ce6729d3b4c6940aa993b94b5de470,
         type: 3}
       propertyPath: player
@@ -16625,6 +16693,11 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5208186756748012777, guid: afea9c7751a171d469cef9196e509bd2,
+        type: 3}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5208186756748012778, guid: afea9c7751a171d469cef9196e509bd2,
         type: 3}
       propertyPath: healthbar
@@ -16635,6 +16708,11 @@ PrefabInstance:
       propertyPath: ahealthbar
       value: 
       objectReference: {fileID: 1037443541}
+    - target: {fileID: 5208186756748012778, guid: afea9c7751a171d469cef9196e509bd2,
+        type: 3}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5208186756748012779, guid: afea9c7751a171d469cef9196e509bd2,
         type: 3}
       propertyPath: LayingWeapon

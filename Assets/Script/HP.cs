@@ -33,6 +33,16 @@ public class HP : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        if (gameObject.layer == 10)
+        {
+            ahp = Player_Management.Instance.ahp;
+        }
+        healthbar.SetHealth(hp);
+        ahealthbar.SetAHealth(ahp);
+    }
+
     public void DealDamage(float damage, float Adamage)
     {
         if(isInvulnerable) return;
@@ -71,17 +81,20 @@ public class HP : MonoBehaviour
     {
         hp = 150;
         ahp = 50;
+        healthbar.SetHealth(hp);
+        ahealthbar.SetAHealth(ahp);
     }
 
     void BackToMainMenu()
     {
+        Player_Management.Instance.ahp = 50;
         SceneManager.LoadScene("GameOver");
     }
 
     void BackInTime()
     {
         FindObjectOfType<AudioManager>().Play("PlayerDeath");
-        gameObject.transform.position = new Vector3 (-141,-30,0);
-        hp = 150;
+        SceneManager.LoadScene("SampleScene");
+        Player_Management.Instance.ahp = ahp;
     }
 }
