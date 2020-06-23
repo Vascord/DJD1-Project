@@ -38,9 +38,9 @@ public class HP : MonoBehaviour
         if (gameObject.layer == 10)
         {
             ahp = Player_Management.Instance.ahp;
+            healthbar.SetHealth(hp);
+            ahealthbar.SetAHealth(ahp);
         }
-        healthbar.SetHealth(hp);
-        ahealthbar.SetAHealth(ahp);
     }
 
     public void DealDamage(float damage, float Adamage)
@@ -94,7 +94,7 @@ public class HP : MonoBehaviour
     void BackInTime()
     {
         FindObjectOfType<AudioManager>().Play("PlayerDeath");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Player_Management.Instance.ahp = ahp;
     }
 }
