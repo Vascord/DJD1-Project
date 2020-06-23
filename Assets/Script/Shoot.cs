@@ -22,7 +22,7 @@ public class Shoot : MonoBehaviour
     public GameObject   macbullet;
     public int[] weapon = new int [] {2, 0, 0};
 
-    int[] ammo = new int [] {0, 0, 0};
+    public int[] ammo = new int [] {0, 0, 0};
 
     bool IsTrigger()
     {
@@ -41,6 +41,14 @@ public class Shoot : MonoBehaviour
     {
         timer = triggerTime;
         cooldown = 0.0f;
+        for(int i = 0; i < ammo.Length; i++)
+        {
+            ammo[i] = Player_Management.Instance.ammo[i];
+        }
+        for(int i = 0; i < weapon.Length; i++)
+        {
+            weapon[i] = Player_Management.Instance.weapon[i];
+        }
     }
 
     void Update()

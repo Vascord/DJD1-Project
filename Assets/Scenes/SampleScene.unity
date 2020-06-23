@@ -352,6 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savepoint: SavePoint
   Player: {fileID: 376303310}
+  Weapon: {fileID: 1752805339}
 --- !u!4 &414992943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5208186756935151100, guid: afea9c7751a171d469cef9196e509bd2,
@@ -15784,8 +15785,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2edf9a0cd46c84997b18a730de66e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ahp: 0
+  ahp: 50
   position: {x: 0, y: 0, z: 0}
+  weapon: 020000000000000000000000
+  ammo: 000000000000000000000000
 --- !u!1001 &1611511960
 PrefabInstance:
   m_ObjectHideFlags: 0

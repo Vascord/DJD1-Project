@@ -6,6 +6,8 @@ public class Player_Management : MonoBehaviour
 {
     public float ahp;
     public Vector3 position = new Vector3(0,0,0);
+    public int[] weapon = new int [] {2, 0, 0};
+    public int[] ammo = new int [] {0, 0, 0};
 
     public static Player_Management Instance;
 
@@ -21,9 +23,4 @@ public class Player_Management : MonoBehaviour
             Destroy (gameObject);
         }
     }
-
-    void Start()
-    {
-        ahp = 50;
-    }   
 }
