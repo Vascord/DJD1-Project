@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.UI;
 
 public class Shoot : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class Shoot : MonoBehaviour
     public GameObject   handgun;
     public GameObject   shotgun;
     public GameObject   mac10;
+
+    public Text ammoText;
     public int[] weapon = new int [] {2, 0, 0};
 
     public int[] ammo = new int [] {0, 0, 0};
@@ -64,6 +67,7 @@ public class Shoot : MonoBehaviour
             handgun.SetActive(true);
             shotgun.SetActive(false);
             mac10.SetActive(false);
+            ammoText.text = "∞";
         }
         else if(weapon[1] == 2)
         {
@@ -73,6 +77,7 @@ public class Shoot : MonoBehaviour
             handgun.SetActive(false);
             shotgun.SetActive(true);
             mac10.SetActive(false);
+            ammoText.text = ammo[1].ToString();
         }
         else if(weapon[2] == 2)
         {
@@ -82,6 +87,7 @@ public class Shoot : MonoBehaviour
             handgun.SetActive(false);
             shotgun.SetActive(false);
             mac10.SetActive(true);
+            ammoText.text = ammo[2].ToString();
         }
 
         if (Input.GetButtonDown("Swap"))
