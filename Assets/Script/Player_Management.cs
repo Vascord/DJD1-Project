@@ -8,6 +8,7 @@ public class Player_Management : MonoBehaviour
     public Vector3 position = new Vector3(0,0,0);
     public int[] weapon = new int [] {2, 0, 0};
     public int[] ammo = new int [] {0, 0, 0};
+    public int save_point;
 
     public static Player_Management Instance;
 

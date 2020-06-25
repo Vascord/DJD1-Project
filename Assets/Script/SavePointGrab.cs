@@ -22,12 +22,21 @@ public class SavePointGrab : MonoBehaviour
                 player.HealDamage();
                 Player_Management.Instance.position = gameObject.transform.position;
 
+                SaveManagement number = collision.GetComponent<SaveManagement>();
+                Player_Management.Instance.save_point = number.save_points_number;
+
                 Shoot weapon = Weapon.GetComponent<Shoot>();
 
                 if (weapon)
                 {
-                    Player_Management.Instance.ammo = weapon.ammo;
-                    Player_Management.Instance.weapon = weapon.weapon;
+                    for(int i = 0; i < weapon.ammo.Length; i++)
+                    {
+                        Player_Management.Instance.ammo[i] = weapon.ammo[i];
+                    }
+                    for(int i = 0; i < weapon.weapon.Length; i++)
+                    {
+                        Player_Management.Instance.weapon[i] = weapon.weapon[i];
+                    }
                 }
             }
         }

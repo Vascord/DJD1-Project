@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class SaveManagement : MonoBehaviour
 {
-    public static SaveManagement Instance;
+    public int save_points_number = 0;
 
     void Awake ()   
     {
-        if (Instance == null)
+        if(Player_Management.Instance.save_point == save_points_number)
         {
-            DontDestroyOnLoad(gameObject);
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy (gameObject);
+            Destroy(gameObject);
         }
     }
 }
