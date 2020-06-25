@@ -150,27 +150,38 @@ public class SmartEnemy : MonoBehaviour
 
             distance_player = Vector3.Distance ((player.transform.position + new Vector3 (0,8,0)), wallDetector.transform.position);
 
-            if(distance_player < 300)
+            if((distance_player < 300) && (((player.transform.position[1]/wallDetector.transform.position[1]) > 0.2) &&
+            ((player.transform.position[1]/wallDetector.transform.position[1]) < 1.5)))
             {
                 player_position = (wallDetector.transform.position - (player.transform.position + new Vector3 (0,8,0))).normalized;
 
                 forward = (wallDetector.transform.position - enemyDetector.transform.position).normalized;
 
-                if(Vector3.Dot(player_position, forward) < 0)
+                if(Vector3.Dot(player_position, forward) < -0.6)
                 {
                     transform.rotation = transform.rotation * Quaternion.Euler(0, 180, 0);
                 }
                 else
                 {
-                    currentVelocity.x = transform.right.x * moveSpeed;
+                    if((distance_player < 300) && (((player.transform.position[0]/wallDetector.transform.position[0]) > 0.995) &&
+                    ((player.transform.position[0]/wallDetector.transform.position[0]) < 1.005)))
+                    {
+                        currentVelocity.x = 0;
 
-                    rigidBody.velocity = currentVelocity;
+                        rigidBody.velocity = currentVelocity;
+                    }
+                    else
+                    {
+                        currentVelocity.x = transform.right.x * moveSpeed;
+
+                        rigidBody.velocity = currentVelocity;
+                    }
                 }
             }
             else
-            {
+            {     
                 chaseMode = false;
-                
+
                 currentVelocity.x = transform.right.x * moveSpeed;
 
                 rigidBody.velocity = currentVelocity;

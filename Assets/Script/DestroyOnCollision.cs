@@ -31,6 +31,15 @@ public class DestroyOnCollision : MonoBehaviour
             {
                 hp.DealDamage(damage, Adamage);
             }
+
+            BossCinematic cinematic = gameObject.GetComponent<BossCinematic>();
+
+            if(cinematic)
+            {
+                cinematic.Cutscene();
+            }
+
+
         }
     }
 }
