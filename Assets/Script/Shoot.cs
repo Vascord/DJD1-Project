@@ -20,6 +20,9 @@ public class Shoot : MonoBehaviour
     public GameObject   bullet;
     public GameObject   shotgunbullet;
     public GameObject   macbullet;
+    public GameObject   handgun;
+    public GameObject   shotgun;
+    public GameObject   mac10;
     public int[] weapon = new int [] {2, 0, 0};
 
     public int[] ammo = new int [] {0, 0, 0};
@@ -58,18 +61,27 @@ public class Shoot : MonoBehaviour
             cooldownTime = 0.5f;
             triggerTime = 1.0f;
             CooldownTiming(cooldownTime, triggerTime);
+            handgun.SetActive(true);
+            shotgun.SetActive(false);
+            mac10.SetActive(false);
         }
         else if(weapon[1] == 2)
         {
             cooldownTime = 1.5f;
             triggerTime = 1.0f;
             CooldownTiming(cooldownTime, triggerTime);
+            handgun.SetActive(false);
+            shotgun.SetActive(true);
+            mac10.SetActive(false);
         }
         else if(weapon[2] == 2)
         {
             cooldownTime = 0.1f;
             triggerTime = 1.0f;
             CooldownTiming(cooldownTime, triggerTime);
+            handgun.SetActive(false);
+            shotgun.SetActive(false);
+            mac10.SetActive(true);
         }
 
         if (Input.GetButtonDown("Swap"))
@@ -110,6 +122,7 @@ public class Shoot : MonoBehaviour
             {
                 weapon[0] = 2;
             }
+
         }
     }
 
