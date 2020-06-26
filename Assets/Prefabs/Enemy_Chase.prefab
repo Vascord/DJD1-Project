@@ -75,8 +75,9 @@ GameObject:
   - component: {fileID: 2786656829324594045}
   - component: {fileID: 2786656829324594044}
   - component: {fileID: 2786656829324593283}
+  - component: {fileID: 7229240292049491265}
   m_Layer: 9
-  m_Name: Enemy_Chase (1)
+  m_Name: Enemy_Chase
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,7 +254,26 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  player: {fileID: 0}
+  player: {fileID: 5208186755794055191, guid: afea9c7751a171d469cef9196e509bd2, type: 3}
+--- !u!95 &7229240292049491265
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786656829324593282}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 840134f6dd014a049b40b23bf6d82108, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2786656829340377758
 GameObject:
   m_ObjectHideFlags: 0

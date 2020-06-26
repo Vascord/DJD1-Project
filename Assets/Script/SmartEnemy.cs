@@ -18,6 +18,7 @@ public class SmartEnemy : MonoBehaviour
 
     Vector3 player_position;
     Vector3 forward;
+    Animator anim;
 
     float distance_player;
     float view;
@@ -26,6 +27,7 @@ public class SmartEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
         rigidBody.velocity = new Vector2(moveSpeed, 0.0f);
         chaseMode = false;
@@ -92,6 +94,7 @@ public class SmartEnemy : MonoBehaviour
                 if(Vector3.Dot(player_position, forward) > 0.9)
                 {
                     chaseMode = true;
+                    anim.SetBool("Chase", true);
                 }
                 else
                 {
@@ -181,6 +184,7 @@ public class SmartEnemy : MonoBehaviour
             else
             {     
                 chaseMode = false;
+                anim.SetBool("Chase", false);
 
                 currentVelocity.x = transform.right.x * moveSpeed;
 

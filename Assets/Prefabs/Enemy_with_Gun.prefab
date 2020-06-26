@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 4369291572060827733}
   - component: {fileID: 4369291572060827738}
   - component: {fileID: 4369291572060827739}
+  - component: {fileID: 620231652107373343}
   m_Layer: 9
-  m_Name: Enemy_with_Gun (1)
+  m_Name: Enemy_with_Gun
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 4369291573444486110}
   enemy: {fileID: 4369291572060827729}
-  player: {fileID: 0}
+  player: {fileID: 5208186755794055191, guid: afea9c7751a171d469cef9196e509bd2, type: 3}
   cooldownTime: 0.5
   triggerTime: 1
   bullet: {fileID: 7295667498489955483, guid: 5998ac0cdcadbf442bb0dc58c4158219, type: 3}
@@ -185,6 +186,25 @@ MonoBehaviour:
   ahp: 0
   healthbar: {fileID: 0}
   ahealthbar: {fileID: 0}
+--- !u!95 &620231652107373343
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4369291572060827736}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 53e746411614c8b4fb5dac3ef1ae7c82, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4369291573444486111
 GameObject:
   m_ObjectHideFlags: 0
