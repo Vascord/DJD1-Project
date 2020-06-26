@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 4369291573444486110}
   enemy: {fileID: 4369291572060827729}
-  player: {fileID: 5208186755794055191, guid: afea9c7751a171d469cef9196e509bd2, type: 3}
+  player: {fileID: 0}
   cooldownTime: 0.5
   triggerTime: 1
   bullet: {fileID: 7295667498489955483, guid: 5998ac0cdcadbf442bb0dc58c4158219, type: 3}

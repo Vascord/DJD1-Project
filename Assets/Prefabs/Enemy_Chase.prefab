@@ -254,7 +254,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  player: {fileID: 5208186755794055191, guid: afea9c7751a171d469cef9196e509bd2, type: 3}
+  player: {fileID: 0}
 --- !u!95 &7229240292049491265
 Animator:
   serializedVersion: 3
