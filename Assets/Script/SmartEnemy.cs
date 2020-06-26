@@ -166,8 +166,8 @@ public class SmartEnemy : MonoBehaviour
                 }
                 else
                 {
-                    if((distance_player < 300) && (((player.transform.position[0]/wallDetector.transform.position[0]) > 0.995) &&
-                    ((player.transform.position[0]/wallDetector.transform.position[0]) < 1.005)))
+                    if((distance_player < 300) && (((player.transform.position[0]/wallDetector.transform.position[0]) > 0.9995) &&
+                    ((player.transform.position[0]/wallDetector.transform.position[0]) < 1.0005)))
                     {
                         currentVelocity.x = 0;
 

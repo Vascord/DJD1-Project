@@ -16,15 +16,8 @@ public class DestroyOnCollision : MonoBehaviour
     {
         if ((tag == collision.tag) || (walltag == collision.tag))
         {
-            if(gameObject.tag == "SavePoint")
-            {
-                gameObject.transform.position = new Vector3(-10000,-10000,-100);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-
+            Destroy(gameObject);
+            
             HP hp = collision.GetComponent<HP>();
 
             if (hp)
@@ -39,7 +32,12 @@ public class DestroyOnCollision : MonoBehaviour
                 cinematic.Cutscene();
             }
 
+            BossFightStarts fight = gameObject.GetComponent<BossFightStarts>();
 
+            if(fight)
+            {
+                fight.Cutscene();
+            }
         }
     }
 }

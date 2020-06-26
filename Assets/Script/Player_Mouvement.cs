@@ -104,4 +104,11 @@ public class Player_Mouvement : MonoBehaviour
         anim.SetFloat("AbsVelY", currentVelocity.y);
         anim.SetBool("OnGround", onGround);
     }
+
+    public void Stop()
+    {
+        anim.SetFloat("AbsVelX", 0);
+        anim.SetFloat("AbsVelY", 0);
+        anim.SetBool("OnGround", true);
+    }
 }
