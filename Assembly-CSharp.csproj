@@ -66,9 +66,10 @@
      <Compile Include="Assets\Script\DestroyOnCollision.cs" />
      <Compile Include="Assets\Script\Enemy.cs" />
      <Compile Include="Assets\Script\GameOver.cs" />
+     <Compile Include="Assets\Script\GoBack.cs" />
+     <Compile Include="Assets\Script\GoopShot.cs" />
      <Compile Include="Assets\Script\HP.cs" />
      <Compile Include="Assets\Script\ImmobileEnemy.cs" />
-     <Compile Include="Assets\Script\Inventory.cs" />
      <Compile Include="Assets\Script\MainMenu.cs" />
      <Compile Include="Assets\Script\MoveForward.cs" />
      <Compile Include="Assets\Script\PauseMenu.cs" />
@@ -80,7 +81,6 @@
      <Compile Include="Assets\Script\SmartEnemy.cs" />
      <Compile Include="Assets\Script\Sound.cs" />
      <Compile Include="Assets\Script\UIManager.cs" />
-     <Compile Include="Assets\Script\WeaponGrab.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

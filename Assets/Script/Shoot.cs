@@ -71,7 +71,7 @@ public class Shoot : MonoBehaviour
         }
         else if(weapon[1] == 2)
         {
-            cooldownTime = 1.2f;
+            cooldownTime = 1f;
             triggerTime = 1.0f;
             CooldownTiming(cooldownTime, triggerTime);
             handgun.SetActive(false);
@@ -141,11 +141,11 @@ public class Shoot : MonoBehaviour
 
         if(number == 1)
         {
-            ammo[number] += 10;
+            ammo[number] = 10;
         }
         if(number == 2)
         {
-            ammo[number] += 80;
+            ammo[number] = 40;
         }
     }
 

@@ -33,4 +33,13 @@ public class MoveForward : MonoBehaviour
     {
         
     }
+
+    public void Return()
+    {
+        moveVector = -(moveVector);
+
+        startPos = transform.position;
+
+        timer = 0.0f;
+    }
 }

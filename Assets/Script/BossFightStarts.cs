@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossFightStarts : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject Boss;
 
     public void Cutscene()
     {
@@ -13,6 +14,13 @@ public class BossFightStarts : MonoBehaviour
         if(player)
         {
             player.enabled = true;
+        }
+
+        Boss_Alpha boss = Boss.GetComponent<Boss_Alpha>();
+
+        if(boss)
+        {
+            boss.enabled = true;
         }
     }
 }

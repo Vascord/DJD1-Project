@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BossCinematic : MonoBehaviour
 {
-    public GameObject wall1;
-    public GameObject wall2;
+    public GameObject wall_f;
+    public GameObject wall_g;
     public GameObject camera;
     public GameObject truecamera;
     public GameObject Player;
@@ -13,8 +13,8 @@ public class BossCinematic : MonoBehaviour
 
     public void Cutscene()
     {
-        wall1.SetActive(true);
-        wall2.SetActive(true);
+        wall_f.SetActive(true);
+        wall_g.SetActive(true);
         truecamera.SetActive(false);
         camera.SetActive(true);
         Destroy(platform);
