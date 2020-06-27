@@ -54,17 +54,24 @@ public class HP : MonoBehaviour
         hp = hp - damage;
 
         ahp = ahp - Adamage;
+        
+        if(gameObject.layer == 9 && hp >= 1)
+        {
+            //bool enemie gets damaged
+        }
 
         if (gameObject.layer == 10)
         {
             isInvulnerable = true;
-
+            //gets damaged
             if((ahp <= 0) && (hp <= 0))
             {
+                //permanent death
                 BackToMainMenu();
             }
             else if (hp <= 0)
             {
+                //temporary death
                 BackInTime();
             }
 
@@ -74,6 +81,7 @@ public class HP : MonoBehaviour
         }
         else if (hp <= 0)
         {
+            //enemy death
             Destroy(gameObject);
         }
 
