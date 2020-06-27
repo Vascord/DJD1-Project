@@ -9,6 +9,7 @@ public class HP : MonoBehaviour
     public float ahp = 50;
     public UIManager healthbar;
     public UIManager ahealthbar;
+    public GameObject Gameover;
 
     float timer = 0.0f;
 
@@ -87,8 +88,9 @@ public class HP : MonoBehaviour
 
     void BackToMainMenu()
     {
+        Gameover.SetActive(true);
+        Time.timeScale = 0f;
         Player_Management.Instance.ahp = 50;
-        SceneManager.LoadScene("GameOver");
     }
 
     void BackInTime()

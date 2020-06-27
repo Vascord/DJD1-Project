@@ -7,7 +7,8 @@ public class GameOver : MonoBehaviour
 {
     public void PlayGame()
     {
-        Application.LoadLevel(0);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
         Debug.Log("nigga");
     }
     public void QuitGame()
