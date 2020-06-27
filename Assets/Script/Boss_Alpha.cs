@@ -58,7 +58,7 @@ public class Boss_Alpha : MonoBehaviour
         if(taks == 0)
         {
             cooldown = Time.time;
-            luck = Random.Range(1,4);
+            luck = 1;
             taks = 1;
         }
         else if(Time.time - cooldown <= 2)
@@ -74,11 +74,6 @@ public class Boss_Alpha : MonoBehaviour
                 {
                     cooldown_3 = Time.time;
                     distance = player.transform.position[0] - gameObject.transform.position[0];
-                    distance_gun = player.transform.position[0] - gun.transform.position[0];
-                    if(distance < distance_gun)
-                    {
-                        transform.rotation = transform.rotation * Quaternion.Euler(0, 180, 0);
-                    }
                     tiks = 1;
                 }
 
@@ -86,15 +81,27 @@ public class Boss_Alpha : MonoBehaviour
                 {
                     currentVelocity.y = 500;
                     rigidBody.gravityScale = 0.0f;
-                    if((distance > 30) && (right == false) && (left == false))
+                    if((distance > 30) && (tiks == 1))
                     {
+                        if(left == true)
+                        {
+                            transform.rotation = transform.rotation * Quaternion.Euler(0, 180, 0);
+                            left = false;
+                        }
                         currentVelocity.x = distance * 1.7f;
                         right = true;
+                        tiks = 2;
                     }
-                    else if((distance < -30) && (right == false) && (left == false))
+                    else if((distance < -30) && (tiks == 1))
                     {
+                        if(right == true)
+                        {
+                            transform.rotation = transform.rotation * Quaternion.Euler(0, 180, 0);
+                            right = false;
+                        }
                         currentVelocity.x = distance * 1.7f;
                         left = true;
+                        tiks = 2;
                     }
 
                     if(right == true)
@@ -112,10 +119,10 @@ public class Boss_Alpha : MonoBehaviour
 
                     if(onGround)
                     {
-                        if(tiks == 1)
+                        if(tiks == 2)
                         {
                             cooldown_2 = Time.time;
-                            tiks = 2;
+                            tiks = 3;
                         }
 
                         if(Time.time - cooldown_2 <= 0.7f)
@@ -126,13 +133,18 @@ public class Boss_Alpha : MonoBehaviour
                         {
                             toks += 1;
                             tiks = 0;
-                            right = false;
-                            left = false;
                             if(toks == 5)
                             {
                                 luck = 0;
                                 taks = 0;
                                 toks = 0;
+                                distance = player.transform.position[0] - gameObject.transform.position[0];
+                                if(((distance < -30) && (right == true)) || ((distance > 30) && (left == true)))
+                                {
+                                    transform.rotation = transform.rotation * Quaternion.Euler(0, 180, 0);
+                                }
+                                right = false;
+                                left = false;
                             }
                         }
                     }
@@ -184,7 +196,7 @@ public class Boss_Alpha : MonoBehaviour
                     rng = Random.Range(1,3);
                     if(rng == 1)
                     {
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.13f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.2f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
 
@@ -192,25 +204,25 @@ public class Boss_Alpha : MonoBehaviour
 
                         Instantiate(bullet, gun.transform.position, rotation);
 
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.13f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.2f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
                     }
                     else if(rng == 2)
                     {
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.15f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.3f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
 
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.05f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.1f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
 
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.05f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.1f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
 
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.15f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.3f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
                     }

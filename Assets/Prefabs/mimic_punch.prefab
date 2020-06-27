@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useObjectDirection: 1
   moveVector: {x: 1, y: 1, z: 1}
-  speed: 400
+  speed: 300
 --- !u!114 &-1586252629754523641
 MonoBehaviour:
   m_ObjectHideFlags: 0
