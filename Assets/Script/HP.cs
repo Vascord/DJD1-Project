@@ -10,6 +10,7 @@ public class HP : MonoBehaviour
     public UIManager healthbar;
     public UIManager ahealthbar;
     public GameObject Gameover;
+    public GameObject Player_management;
 
     float timer = 0.0f;
 
@@ -91,6 +92,9 @@ public class HP : MonoBehaviour
         Gameover.SetActive(true);
         Time.timeScale = 0f;
         Player_Management.Instance.ahp = 50;
+        Player_Management.Instance.position = new Vector3 (0,0,0);
+        Player_Management.Instance.weapon =  new int [] {2, 0, 0};
+        Player_Management.Instance.ammo = new int [] {0, 0, 0};
     }
 
     void BackInTime()

@@ -9,7 +9,6 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
-        Debug.Log("nigga");
     }
     public void QuitGame()
     {
