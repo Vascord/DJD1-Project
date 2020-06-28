@@ -11,6 +11,10 @@ public class HP : MonoBehaviour
     public UIManager ahealthbar;
     public GameObject Gameover;
     public GameObject Player_management;
+    public GameObject wall_f;
+    public GameObject wall_g;
+    public GameObject camera;
+    public GameObject truecamera;
 
     float timer = 0.0f;
 
@@ -79,7 +83,24 @@ public class HP : MonoBehaviour
             ahealthbar.SetAHealth(ahp);
 
         }
-        else if (hp <= 0)
+
+        Boss_Alpha boss = gameObject.GetComponent<Boss_Alpha>();
+        if((SceneManager.GetActiveScene().name == "Level_1") && (boss) && (hp <= 0))
+        {
+            SceneManager.LoadScene("Level_2");
+            Player_Management.Instance.position = new Vector3(0,0,0);
+            Player_Management.Instance.save_point = 0;
+        }
+        else if((SceneManager.GetActiveScene().name == "Level_2") && (boss) && (hp <= 0))
+        {
+            wall_f.SetActive(false);
+            wall_g.SetActive(false);
+            truecamera.SetActive(true);
+            camera.SetActive(false);
+            Destroy(gameObject);
+        }
+
+        if (hp <= 0)
         {
             FindObjectOfType<AudioManager>().Play("mimicDed");
             Destroy(gameObject);

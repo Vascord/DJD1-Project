@@ -150,8 +150,8 @@ MonoBehaviour:
   damageMask:
     serializedVersion: 2
     m_Bits: 1024
-  damage: 5
-  Adamage: 0
+  damage: 25
+  Adamage: 1
 --- !u!114 &4369291572060827738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +186,12 @@ MonoBehaviour:
   ahp: 0
   healthbar: {fileID: 0}
   ahealthbar: {fileID: 0}
+  Gameover: {fileID: 0}
+  Player_management: {fileID: 0}
+  wall_f: {fileID: 0}
+  wall_g: {fileID: 0}
+  camera: {fileID: 0}
+  truecamera: {fileID: 0}
 --- !u!95 &620231652107373343
 Animator:
   serializedVersion: 3

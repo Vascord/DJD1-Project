@@ -82898,12 +82898,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7366d29726e22bb449c930d5e2036405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2500
+  hp: 2750
   ahp: 0
   healthbar: {fileID: 0}
   ahealthbar: {fileID: 0}
   Gameover: {fileID: 0}
   Player_management: {fileID: 0}
+  wall_f: {fileID: 0}
+  wall_g: {fileID: 0}
+  camera: {fileID: 0}
+  truecamera: {fileID: 0}
 --- !u!1 &1496225828
 GameObject:
   m_ObjectHideFlags: 0

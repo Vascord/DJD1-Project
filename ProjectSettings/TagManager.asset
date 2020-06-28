@@ -12,6 +12,7 @@ TagManager:
   - Shootgun
   - MacDo
   - SavePoint
+  - Boss
   layers:
   - Default
   - TransparentFX

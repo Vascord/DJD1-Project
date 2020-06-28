@@ -58,7 +58,7 @@ public class Boss_Alpha : MonoBehaviour
         if(taks == 0)
         {
             cooldown = Time.time;
-            luck = 1;
+            luck = Random.Range(1,4);
             taks = 1;
         }
         else if(Time.time - cooldown <= 2)
