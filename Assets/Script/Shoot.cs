@@ -100,9 +100,11 @@ public class Shoot : MonoBehaviour
                 {
                     current_weapon = true;
                     e = i;
+                    //FindObjectOfType<AudioManager>().Play("gunswap");
                 }
                 else if((current_weapon == true) && (weapon[i] == 1))
                 {
+                    
                     weapon[i] = 2;
                     current_weapon = false;
                     weapon[e] = 1;
@@ -123,10 +125,10 @@ public class Shoot : MonoBehaviour
                     }
                 }
             }
-
-            if(current_weapon == true)
+            if (current_weapon == true)
             {
                 weapon[0] = 2;
+                // swap isnt possible
             }
 
         }
@@ -209,17 +211,18 @@ public class Shoot : MonoBehaviour
 
         if ((gameObject.tag == "Player") && (weapon[0] == 2))
         {
+            FindObjectOfType<AudioManager>().Play("pistol");
             Instantiate(bullet, transform.position, rotation);
         }
 
         if((gameObject.tag == "Player") && (weapon[1] == 2))
         {
-            if(rotation[0] > 0)
+            FindObjectOfType<AudioManager>().Play("shotgun");
+            if (rotation[0] > 0)
             {
                 for(float i = -0.3f; i < 0.31; i += 0.1f)
                 {
                     rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (-1,i,0));
-
                     Instantiate(shotgunbullet, transform.position, rotation);
 
                 }
@@ -246,7 +249,8 @@ public class Shoot : MonoBehaviour
 
         if((gameObject.tag == "Player") && (weapon[2] == 2))
         {
-            if(rotation[0] > 0)
+            FindObjectOfType<AudioManager>().Play("mac10");
+            if (rotation[0] > 0)
             {
                 rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (-1,Random.Range(-0.3f,0.3f),0));
 

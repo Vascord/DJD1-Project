@@ -47,6 +47,7 @@ public class Player_Mouvement : MonoBehaviour
             {
                 dashTime = Time.time;
                 first_dash = true;
+                FindObjectOfType<AudioManager>().Play("dash");
                 anim.SetBool("Dash", true);
             }
         }
@@ -55,6 +56,7 @@ public class Player_Mouvement : MonoBehaviour
             if ((Input.GetButtonDown("Dash")) && (hAxis != 0.0f) && (onGround) && (Time.time - dashTime >= 1.0f))
             {
                 dashTime = Time.time;
+                FindObjectOfType<AudioManager>().Play("dash");
                 anim.SetBool("Dash", true);
             }
         }
@@ -84,6 +86,7 @@ public class Player_Mouvement : MonoBehaviour
 
         if ((Input.GetButtonDown("Jump")) && (onGround))
         {
+            FindObjectOfType<AudioManager>().Play("jump");
             currentVelocity.y = jumpSpeed;
             rb.gravityScale = 0.0f;
             jumpTime = Time.time;

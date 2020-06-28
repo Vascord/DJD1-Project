@@ -63,8 +63,8 @@ public class HP : MonoBehaviour
         if (gameObject.layer == 10)
         {
             isInvulnerable = true;
-            //gets damaged
-            if((ahp <= 0) && (hp <= 0))
+            FindObjectOfType<AudioManager>().Play("playerdamaged");
+            if ((ahp <= 0) && (hp <= 0))
             {
                 //permanent death
                 BackToMainMenu();
@@ -81,7 +81,7 @@ public class HP : MonoBehaviour
         }
         else if (hp <= 0)
         {
-            //enemy death
+            FindObjectOfType<AudioManager>().Play("mimicDed");
             Destroy(gameObject);
         }
 

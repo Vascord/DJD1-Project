@@ -17,17 +17,18 @@ public class AudioManager : MonoBehaviour
     {
         foreach(Sound s in sounds)
         {
+            /* for some reason this bugs the audio source creation
             if (instance == null)
                 instance = this;
             else
             {
                 DontDestroyOnLoad(gameObject);
                 return;
-            }
+            }*/
 
             s.source = gameObject.AddComponent<AudioSource>();
-            volume = s.volume;
             s.source.clip = s.clip;
+
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
