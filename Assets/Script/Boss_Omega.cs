@@ -47,10 +47,10 @@ public class Boss_Omega : MonoBehaviour
         if(taks == 0)
         {
             cooldown = Time.time;
-            luck = 2;
+            luck = Random.Range(1,3);
             taks = 1;
         }
-        else if(Time.time - cooldown <= 4)
+        else if(Time.time - cooldown <= 2)
         {
             
         }
@@ -118,6 +118,9 @@ public class Boss_Omega : MonoBehaviour
                     Instantiate(goop, gooplauncher_2.transform.position, rotation);
 
                     Instantiate(goop, gooplauncher_3.transform.position, rotation);
+
+                    Instantiate(goop, gooplauncher_1.transform.position, rotation);
+
 
                     tiks = 0;
                     toks += 1;

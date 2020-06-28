@@ -16,6 +16,7 @@ public class HP : MonoBehaviour
     public GameObject wall_g;
     public GameObject camera;
     public GameObject truecamera;
+    public GameObject Pew;
     Animator anim;
 
     float timer = 0.0f;
@@ -50,6 +51,37 @@ public class HP : MonoBehaviour
                 tik = 0;
             }
         }
+        if((gameObject.layer == 10) && (hp <= 0))
+        {
+            if(tik == 0)
+            {
+                cooldown = Time.time;
+                tik = 1;
+                anim.SetTrigger("Pdeath");
+                FindObjectOfType<AudioManager>().Play("PlayerDeath");
+                Player_Mouvement boy = gameObject.GetComponent<Player_Mouvement>();
+
+                if(boy)
+                {
+                    boy.enabled = false ;
+                }
+
+                Shoot pew = Pew.GetComponent<Shoot>();
+
+                if(pew)
+                {
+                    pew.enabled = false;
+                }
+            }
+            else if((Time.time - cooldown >= 3) && (ahp > 0))
+            {
+                BackInTime();
+            }
+            else if((Time.time - cooldown >= 3) && (ahp <= 0))
+            {
+                BackToMainMenu();
+            }
+        }
     }
 
     void Start()
@@ -72,11 +104,6 @@ public class HP : MonoBehaviour
         hp = hp - damage;
 
         ahp = ahp - Adamage;
-        
-        if(gameObject.layer == 9 && hp >= 1)
-        {
-            //bool enemie gets damaged
-        }
 
         if (gameObject.layer == 10)
         {
@@ -86,17 +113,6 @@ public class HP : MonoBehaviour
             {
                 anim.SetTrigger("OnHit");
                 FindObjectOfType<AudioManager>().Play("playerdamaged");
-            }
-
-            if ((ahp <= 0) && (hp <= 0))
-            {
-                //permanent death
-                BackToMainMenu();
-            }
-            else if (hp <= 0)
-            {
-                //temporary death
-                BackInTime();
             }
 
             healthbar.SetHealth(hp);
@@ -120,7 +136,7 @@ public class HP : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (hp <= 0)
+        if ((hp <= 0) && (gameObject.layer != 10))
         {
             if(gameObject.name == "Barrier")
             {
@@ -159,9 +175,6 @@ public class HP : MonoBehaviour
 
     void BackInTime()
     {
-        anim.SetTrigger("PDeath");
-        FindObjectOfType<AudioManager>().Play("PlayerDeath");
-        //TIME AQUI BASCO!
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Player_Management.Instance.ahp = ahp;
     }
