@@ -10,6 +10,7 @@ public class HP : MonoBehaviour
     public UIManager healthbar;
     public UIManager ahealthbar;
     public GameObject Gameover;
+    public GameObject Victory;
     public GameObject Player_management;
     public GameObject wall_f;
     public GameObject wall_g;
@@ -87,7 +88,7 @@ public class HP : MonoBehaviour
         Boss_Alpha boss = gameObject.GetComponent<Boss_Alpha>();
         if((SceneManager.GetActiveScene().name == "Level_1") && (boss) && (hp <= 0))
         {
-            SceneManager.LoadScene("Level_2");
+            Victory.SetActive(true);
             Player_Management.Instance.position = new Vector3(0,0,0);
             Player_Management.Instance.save_point = 0;
         }
