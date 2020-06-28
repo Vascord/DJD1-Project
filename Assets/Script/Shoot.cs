@@ -147,7 +147,7 @@ public class Shoot : MonoBehaviour
         }
         if(number == 2)
         {
-            ammo[number] = 40;
+            ammo[number] = 60;
         }
     }
 
