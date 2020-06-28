@@ -22,10 +22,11 @@ public class Player_Mouvement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().Play("theme1");
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         gameObject.transform.position = Player_Management.Instance.position;
-        FindObjectOfType<AudioManager>().Play("theme1");
+       
     }
 
     // Update is called once per frame
