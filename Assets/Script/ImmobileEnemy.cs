@@ -14,6 +14,8 @@ public class ImmobileEnemy : MonoBehaviour
     Vector3 player_position;
     Vector3 forward;
 
+    Animator anim;
+
     float distance_player;
     float timer;
     float cooldown;
@@ -21,6 +23,7 @@ public class ImmobileEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         timer = triggerTime;
         player = GameObject.Find("Player");
     }
@@ -51,6 +54,7 @@ public class ImmobileEnemy : MonoBehaviour
                         rotation = Quaternion.LookRotation(Vector3.forward, dir);
 
                         Instantiate(bullet, transform.position, rotation);
+                        anim.SetTrigger("Shoot");
                         
                     }
                     else if(Vector3.Dot(player_position, forward) < -0.6)
