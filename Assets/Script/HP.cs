@@ -16,6 +16,7 @@ public class HP : MonoBehaviour
     public GameObject wall_g;
     public GameObject camera;
     public GameObject truecamera;
+    Animator anim;
 
     float timer = 0.0f;
     float cooldown = 0.0f;
@@ -53,6 +54,7 @@ public class HP : MonoBehaviour
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         if (gameObject.layer == 10)
         {
             ahp = Player_Management.Instance.ahp;
@@ -82,6 +84,7 @@ public class HP : MonoBehaviour
 
             if(damage > 0)
             {
+                anim.SetTrigger("OnHit");
                 FindObjectOfType<AudioManager>().Play("playerdamaged");
             }
 
@@ -156,7 +159,9 @@ public class HP : MonoBehaviour
 
     void BackInTime()
     {
+        anim.SetTrigger("PDeath");
         FindObjectOfType<AudioManager>().Play("PlayerDeath");
+        //TIME AQUI BASCO!
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Player_Management.Instance.ahp = ahp;
     }
