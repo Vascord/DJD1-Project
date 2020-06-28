@@ -196,7 +196,7 @@ public class Boss_Alpha : MonoBehaviour
                     rng = Random.Range(1,3);
                     if(rng == 1)
                     {
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.2f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.3f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
 
@@ -204,25 +204,25 @@ public class Boss_Alpha : MonoBehaviour
 
                         Instantiate(bullet, gun.transform.position, rotation);
 
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.2f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.3f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
                     }
                     else if(rng == 2)
                     {
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.3f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.4f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
 
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.1f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,0.2f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
 
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.1f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.2f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
 
-                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.3f,0));
+                        rotation = Quaternion.LookRotation(Vector3.forward, dir + new Vector3(0,-0.4f,0));
 
                         Instantiate(bullet, gun.transform.position, rotation);
                     }
