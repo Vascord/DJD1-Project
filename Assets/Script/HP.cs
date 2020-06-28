@@ -18,6 +18,8 @@ public class HP : MonoBehaviour
     public GameObject truecamera;
 
     float timer = 0.0f;
+    float cooldown = 0.0f;
+    int tik = 0;
 
     public bool isInvulnerable
     {
@@ -37,6 +39,15 @@ public class HP : MonoBehaviour
         if(timer > 0.0f)
         {
             timer -= Time.deltaTime;
+        }
+
+        if(gameObject.name == "Barrier")
+        {
+            if((Time.time - cooldown >= 5) && (tik == 1))
+            {
+                gameObject.transform.position = new Vector3 (2083.3f, -1648.6f, 0);
+                tik = 0;
+            }
         }
     }
 
@@ -68,7 +79,12 @@ public class HP : MonoBehaviour
         if (gameObject.layer == 10)
         {
             isInvulnerable = true;
-            FindObjectOfType<AudioManager>().Play("playerdamaged");
+
+            if(damage > 0)
+            {
+                FindObjectOfType<AudioManager>().Play("playerdamaged");
+            }
+
             if ((ahp <= 0) && (hp <= 0))
             {
                 //permanent death
@@ -103,8 +119,18 @@ public class HP : MonoBehaviour
 
         if (hp <= 0)
         {
-            FindObjectOfType<AudioManager>().Play("mimicDed");
-            Destroy(gameObject);
+            if(gameObject.name == "Barrier")
+            {
+                hp = 200;
+                cooldown = Time.time;
+                tik = 1;
+                gameObject.transform.position = new Vector3 (-30000f, -30000f, 0);
+            }
+            else
+            {
+                FindObjectOfType<AudioManager>().Play("mimicDed");
+                Destroy(gameObject);
+            }
         }
 
     }

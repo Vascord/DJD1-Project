@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float     enemydetectionRadius = 1.0f;
     [SerializeField] LayerMask groundLayers;
     [SerializeField] LayerMask enemyLayers;
-    [SerializeField] Transform player;
+    [SerializeField] GameObject player;
 
     Rigidbody2D rigidBody;
 
@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         rigidBody.velocity = new Vector2(moveSpeed, 0.0f);
+        player = GameObject.Find("Player");
     }
 
 

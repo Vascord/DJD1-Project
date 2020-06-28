@@ -6,7 +6,7 @@ public class ImmobileEnemy : MonoBehaviour
 {
     [SerializeField] Transform gun = null;
     [SerializeField] Transform enemy = null;
-    [SerializeField] Transform player;
+    [SerializeField] GameObject player;
     [SerializeField] float        cooldownTime = 0.5f;
     [SerializeField] float        triggerTime = 1.0f;
     [SerializeField] GameObject   bullet;
@@ -22,6 +22,7 @@ public class ImmobileEnemy : MonoBehaviour
     void Start()
     {
         timer = triggerTime;
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame

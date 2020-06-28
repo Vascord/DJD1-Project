@@ -100,7 +100,6 @@ public class Shoot : MonoBehaviour
                 {
                     current_weapon = true;
                     e = i;
-                    //FindObjectOfType<AudioManager>().Play("gunswap");
                 }
                 else if((current_weapon == true) && (weapon[i] == 1))
                 {
@@ -108,6 +107,7 @@ public class Shoot : MonoBehaviour
                     weapon[i] = 2;
                     current_weapon = false;
                     weapon[e] = 1;
+                    FindObjectOfType<AudioManager>().Play("gunswap");
                     break;
                 }
             }
@@ -121,6 +121,7 @@ public class Shoot : MonoBehaviour
                         weapon[i] = 2;
                         current_weapon = false;
                         weapon[e] = 1;
+                        FindObjectOfType<AudioManager>().Play("gunswap");
                         break;
                     }
                 }
@@ -128,7 +129,6 @@ public class Shoot : MonoBehaviour
             if (current_weapon == true)
             {
                 weapon[0] = 2;
-                // swap isnt possible
             }
 
         }
