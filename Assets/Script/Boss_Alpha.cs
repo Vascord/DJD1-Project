@@ -17,6 +17,7 @@ public class Boss_Alpha : MonoBehaviour
     [SerializeField] Transform goop; 
 
     Rigidbody2D rigidBody;
+    Animator anim;
 
     int luck;
     int rng;
@@ -35,6 +36,7 @@ public class Boss_Alpha : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
         luck = 0;
         cooldown = 0.0f;
@@ -249,6 +251,7 @@ public class Boss_Alpha : MonoBehaviour
             }
             if((tiks < 3) && (Time.time - cooldown_2 >= 4f))
             {
+                anim.SetTrigger("Attack");
                 Quaternion rotation = transform.rotation;
 
                 Instantiate(goop, gooplauncher_1.transform.position, rotation);

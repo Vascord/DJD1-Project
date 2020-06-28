@@ -135,6 +135,11 @@ public class HP : MonoBehaviour
             camera.SetActive(false);
             Destroy(gameObject);
         }
+        Boss_Omega coiso = gameObject.GetComponent<Boss_Omega>();
+        if((coiso) && (hp <= 0))
+        {
+            Victory.SetActive(true);
+        }
 
         if ((hp <= 0) && (gameObject.layer != 10))
         {
