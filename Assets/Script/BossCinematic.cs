@@ -10,6 +10,7 @@ public class BossCinematic : MonoBehaviour
     public GameObject truecamera;
     public GameObject Player;
     public GameObject platform;
+    public GameObject Gun;
 
     public void Cutscene()
     {
@@ -24,7 +25,14 @@ public class BossCinematic : MonoBehaviour
         if(player)
         {
             player.Stop();
-            player.enabled = false;
+            player.Stop_Movement();
+        }
+
+        Shoot gun = Gun.GetComponent<Shoot>();
+
+        if(gun)
+        {
+            gun.enabled = false;
         }
     }
 }

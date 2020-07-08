@@ -164,5 +164,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tag: Enemy
   walltag: Ground
-  damage: 35
+  weapon: {fileID: 0}
+  damage: 37
   Adamage: 0

@@ -20,8 +20,8 @@ public class HP : MonoBehaviour
     Animator anim;
 
     float timer = 0.0f;
-    float cooldown = 0.0f;
-    int tik = 0;
+    float cooldown;
+    int tik;
 
     public bool isInvulnerable
     {
@@ -36,7 +36,20 @@ public class HP : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+        if (gameObject.layer == 10)
+        {
+            ahp = Player_Management.Instance.ahp;
+            healthbar.SetHealth(hp);
+            ahealthbar.SetAHealth(ahp);
+        }
+        cooldown = Time.time;
+        tik = 0;
+    }
+
+    void Update()
     {
         if(timer > 0.0f)
         {
@@ -45,9 +58,9 @@ public class HP : MonoBehaviour
 
         if(gameObject.name == "Barrier")
         {
-            if((Time.time - cooldown >= 5) && (tik == 1))
+            if((Time.time - cooldown >= 8) && (tik == 1))
             {
-                gameObject.transform.position = new Vector3 (2083.3f, -1648.6f, 0);
+                gameObject.transform.position = new Vector3 (2180.3f, -1649.3f, 0);
                 tik = 0;
             }
         }
@@ -63,7 +76,7 @@ public class HP : MonoBehaviour
 
                 if(boy)
                 {
-                    boy.enabled = false ;
+                    boy.Stop_Movement();
                 }
 
                 Shoot pew = Pew.GetComponent<Shoot>();
@@ -81,17 +94,6 @@ public class HP : MonoBehaviour
             {
                 BackToMainMenu();
             }
-        }
-    }
-
-    void Start()
-    {
-        anim = GetComponent<Animator>();
-        if (gameObject.layer == 10)
-        {
-            ahp = Player_Management.Instance.ahp;
-            healthbar.SetHealth(hp);
-            ahealthbar.SetAHealth(ahp);
         }
     }
 
@@ -138,6 +140,14 @@ public class HP : MonoBehaviour
         Boss_Omega coiso = gameObject.GetComponent<Boss_Omega>();
         if((coiso) && (hp <= 0))
         {
+            Shoot guns = Pew.GetComponent<Shoot>();
+
+            if(guns)
+            {
+                Player_Management.Instance.ammo = guns.ammo ;
+                Player_Management.Instance.weapon = guns.weapon;
+            }
+
             Victory.SetActive(true);
         }
 
@@ -145,7 +155,7 @@ public class HP : MonoBehaviour
         {
             if(gameObject.name == "Barrier")
             {
-                hp = 200;
+                hp = 300;
                 cooldown = Time.time;
                 tik = 1;
                 gameObject.transform.position = new Vector3 (-30000f, -30000f, 0);
@@ -169,13 +179,13 @@ public class HP : MonoBehaviour
 
     void BackToMainMenu()
     {
-        Gameover.SetActive(true);
-        Time.timeScale = 0f;
         Player_Management.Instance.ahp = 50;
         Player_Management.Instance.position = new Vector3 (0,0,0);
         Player_Management.Instance.weapon =  new int [] {2, 0, 0};
         Player_Management.Instance.ammo = new int [] {0, 0, 0};
         Player_Management.Instance.save_point = 0;
+        Gameover.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     void BackInTime()

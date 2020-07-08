@@ -6,6 +6,7 @@ public class BossFightStarts : MonoBehaviour
 {
     public GameObject Player;
     public GameObject Boss;
+    public GameObject Gun;
 
     public void Cutscene()
     {
@@ -13,7 +14,14 @@ public class BossFightStarts : MonoBehaviour
 
         if(player)
         {
-            player.enabled = true;
+            player.Go_again();
+        }
+
+        Shoot gun = Gun.GetComponent<Shoot>();
+
+        if(gun)
+        {
+            gun.enabled = true;
         }
 
         Boss_Alpha boss = Boss.GetComponent<Boss_Alpha>();

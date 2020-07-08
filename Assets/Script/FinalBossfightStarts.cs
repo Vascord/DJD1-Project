@@ -6,6 +6,7 @@ public class FinalBossfightStarts : MonoBehaviour
 {
     public GameObject Player;
     public GameObject Boss;
+    public GameObject Gun;
 
     private void OnTriggerEnter2D()
     {
@@ -13,7 +14,14 @@ public class FinalBossfightStarts : MonoBehaviour
         
         if(player)
         {
-            player.enabled = true;
+            player.Go_again();
+        }
+
+        Shoot gun = Gun.GetComponent<Shoot>();
+
+        if(gun)
+        {
+            gun.enabled = true;
         }
 
         Boss_Omega boss = Boss.GetComponent<Boss_Omega>();

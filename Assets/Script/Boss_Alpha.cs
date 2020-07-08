@@ -251,7 +251,6 @@ public class Boss_Alpha : MonoBehaviour
             }
             if((tiks < 3) && (Time.time - cooldown_2 >= 4f))
             {
-                anim.SetTrigger("Attack");
                 Quaternion rotation = transform.rotation;
 
                 Instantiate(goop, gooplauncher_1.transform.position, rotation);

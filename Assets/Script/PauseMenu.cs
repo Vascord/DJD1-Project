@@ -41,6 +41,11 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MenuScene");
+        Player_Management.Instance.ahp = 50;
+        Player_Management.Instance.position = new Vector3 (0,0,0);
+        Player_Management.Instance.weapon =  new int [] {2, 0, 0};
+        Player_Management.Instance.ammo = new int [] {0, 0, 0};
+        Player_Management.Instance.save_point = 0;
     }
     public void QuitGame()
     {

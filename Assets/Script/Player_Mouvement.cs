@@ -15,6 +15,7 @@ public class Player_Mouvement : MonoBehaviour
     float dashTime;
     bool first_dash = false;
     bool onGround;
+    bool stop = false;
 
     Rigidbody2D rb;
     Animator anim;
@@ -32,82 +33,90 @@ public class Player_Mouvement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        float hAxis = Input.GetAxis("Horizontal");
-
-        Vector2 currentVelocity = rb.velocity;
-
-        currentVelocity = new Vector2(maxSpeed * hAxis, currentVelocity.y);
-
-        Collider2D groundCollision = Physics2D.OverlapCircle(groundCheck.position, 4, groundLayers);
-
-        onGround = groundCollision != null;
-
-        if ((Time.time < 5.0f) && (first_dash == false))
+        if(stop == true)
         {
-            if ((Input.GetButtonDown("Dash")) && (hAxis != 0.0f) && (onGround))
-            {
-                dashTime = Time.time;
-                first_dash = true;
-                FindObjectOfType<AudioManager>().Play("dash");
-                anim.SetBool("Dash", true);
-            }
+            rb.gravityScale = 100.0f;
+            rb.velocity = new Vector2 (0,0);
         }
+
         else
         {
-            if ((Input.GetButtonDown("Dash")) && (hAxis != 0.0f) && (onGround) && (Time.time - dashTime >= 1.0f))
+            float hAxis = Input.GetAxis("Horizontal");
+
+            Vector2 currentVelocity = rb.velocity;
+
+            currentVelocity = new Vector2(maxSpeed * hAxis, currentVelocity.y);
+
+            Collider2D groundCollision = Physics2D.OverlapCircle(groundCheck.position, 4, groundLayers);
+
+            onGround = groundCollision != null;
+
+            if ((Time.time < 5.0f) && (first_dash == false))
             {
-                dashTime = Time.time;
-                FindObjectOfType<AudioManager>().Play("dash");
-                anim.SetBool("Dash", true);
+                if ((Input.GetButtonDown("Dash")) && (hAxis != 0.0f) && (onGround))
+                {
+                    dashTime = Time.time;
+                    first_dash = true;
+                    FindObjectOfType<AudioManager>().Play("dash");
+                    anim.SetBool("Dash", true);
+                }
             }
-        }
-        if ((Time.time - dashTime < 0.3f) && (Time.time > 0.3f))
-        {
-            currentVelocity = new Vector2(300 * hAxis, currentVelocity.y);
-        }
-        else
-        {
-            anim.SetBool("Dash", false);
-        }
-
-        if (currentVelocity.x < -0.5f)
-        {
-            if (transform.right.x > 0)
+            else
             {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
+                if ((Input.GetButtonDown("Dash")) && (hAxis != 0.0f) && (onGround) && (Time.time - dashTime >= 1.0f))
+                {
+                    dashTime = Time.time;
+                    FindObjectOfType<AudioManager>().Play("dash");
+                    anim.SetBool("Dash", true);
+                }
             }
-        }
-        else if (currentVelocity.x > 0.5f)
-        {
-            if (transform.right.x < 0)
+            if ((Time.time - dashTime < 0.3f) && (Time.time > 0.3f))
             {
-                transform.rotation = Quaternion.identity;
+                currentVelocity = new Vector2(300 * hAxis, currentVelocity.y);
             }
+            else
+            {
+                anim.SetBool("Dash", false);
+            }
+
+            if (currentVelocity.x < -0.5f)
+            {
+                if (transform.right.x > 0)
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+            }
+            else if (currentVelocity.x > 0.5f)
+            {
+                if (transform.right.x < 0)
+                {
+                    transform.rotation = Quaternion.identity;
+                }
+            }
+
+            if ((Input.GetButtonDown("Jump")) && (onGround))
+            {
+                FindObjectOfType<AudioManager>().Play("jump");
+                currentVelocity.y = jumpSpeed;
+                rb.gravityScale = 0.0f;
+                jumpTime = Time.time;
+            }
+            else if (!(Input.GetButton("Jump") && ((Time.time - jumpTime) < jumpMaxTime)))
+            {
+                rb.gravityScale = 5.0f;
+            }
+            else
+            {
+
+            }
+
+            rb.velocity = currentVelocity;
+
+            anim.SetFloat("AbsVelX", Mathf.Abs(currentVelocity.x));
+            anim.SetFloat("AbsVelY", currentVelocity.y);
+            anim.SetBool("OnGround", onGround);
+
         }
-
-        if ((Input.GetButtonDown("Jump")) && (onGround))
-        {
-            FindObjectOfType<AudioManager>().Play("jump");
-            currentVelocity.y = jumpSpeed;
-            rb.gravityScale = 0.0f;
-            jumpTime = Time.time;
-        }
-        else if (!(Input.GetButton("Jump") && ((Time.time - jumpTime) < jumpMaxTime)))
-        {
-            rb.gravityScale = 5.0f;
-        }
-        else
-        {
-
-        }
-
-
-        rb.velocity = currentVelocity;
-
-        anim.SetFloat("AbsVelX", Mathf.Abs(currentVelocity.x));
-        anim.SetFloat("AbsVelY", currentVelocity.y);
-        anim.SetBool("OnGround", onGround);
     }
 
     public void Stop()
@@ -115,5 +124,16 @@ public class Player_Mouvement : MonoBehaviour
         anim.SetFloat("AbsVelX", 0);
         anim.SetFloat("AbsVelY", 0);
         anim.SetBool("OnGround", true);
+        anim.SetBool("Dash", false);
+    }
+
+    public void Stop_Movement()
+    {
+        stop = true;
+    }
+
+    public void Go_again()
+    {
+        stop = false;
     }
 }

@@ -12,10 +12,18 @@ public class GameOver : MonoBehaviour
     }
     public void NextLevel()
     {
+        Player_Management.Instance.ahp = 50;
+        Player_Management.Instance.position = new Vector3 (0,0,0);
+        Player_Management.Instance.save_point = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
     }
 }

@@ -252,13 +252,13 @@ public class Shoot : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("mac10");
             if (rotation[0] > 0)
             {
-                rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (-1,Random.Range(-0.3f,0.3f),0));
+                rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (-1,Random.Range(-0.2f,0.2f),0));
 
                 Instantiate(macbullet, transform.position, rotation);
             }
             else
             {   
-                rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (1,Random.Range(-0.3f,0.3f),0));
+                rotation = Quaternion.LookRotation(Vector3.forward, new Vector3 (1,Random.Range(-0.2f,0.2f),0));
 
                 Instantiate(macbullet, transform.position, rotation); 
             }
